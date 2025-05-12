@@ -1,0 +1,127 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  overflow: hidden;
+  height: 100vh;
+  background-color: #fce4ec;
+  position: relative;
+}
+
+/* Fundo com imagens rotativas */
+.background-image {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  opacity: 1;
+  animation: fadeInOut 20s infinite ease-in-out;
+  z-index: -2;
+}
+
+.bg1 {
+  background-image: url("1000062274.jpg");
+  top: 10%;
+  left: 20%;
+  transform: rotate(-5deg);
+  animation-delay: 0s;
+}
+
+.bg2 {
+  background-image: url("1000062289.jpg");
+  top: 50%;
+  left: 60%;
+  transform: rotate(8deg);
+  animation-delay: 2s;
+}
+
+.bg3 {
+  background-image: url("1000062290.jpg");
+  top: 70%;
+  left: 30%;
+  transform: rotate(-12deg);
+  animation-delay: 4s;
+}
+
+@keyframes fadeInOut {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 0.4; }
+}
+
+/* Carta */
+.card {
+  width: 420px;
+  height: 320px;
+  margin: 100px auto;
+  position: relative;
+  perspective: 1000px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.card-front, .card-inside {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 1s;
+}
+
+.card-front {
+  background-color: pink;
+  font-size: 3em;
+}
+
+.card-inside {
+  transform: rotateY(180deg);
+  font-family: 'Great Vibes', cursive;
+  font-size: 1.3em;
+  padding: 40px;
+  line-height: 1.6;
+  text-align: justify;
+  display: block; /* ← Remove o flex que causava alinhamento vertical */
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+
+.card.open .card-front {
+  transform: rotateY(180deg);
+}
+
+.card.open .card-inside {
+  transform: rotateY(360deg);
+}
+
+/* Corações */
+#hearts-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.heart {
+  position: absolute;
+  color: red;
+  font-size: 2em;
+  animation: floatUp 15s ease-in;
+  opacity: 0;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh);
+    opacity: 0;
+  }
+}
